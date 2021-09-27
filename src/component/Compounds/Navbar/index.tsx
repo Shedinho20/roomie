@@ -27,10 +27,10 @@ export const Navbar = () => {
             Room<span>ie</span>
           </h3>
         </div>
-        <div className="searchField">
-          <SearchIcon id="search" />
-          <Search type="text" placeholder="Search" name="search" handleChange={handleChange} />
-        </div>
+      </div>
+      <div className="searchField">
+        <SearchIcon id="search" />
+        <Search type="text" placeholder="Search" name="search" handleChange={handleChange} />
       </div>
       <div className="userDetails">
         <div className="userIcons">
