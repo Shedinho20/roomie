@@ -1,2 +1,2 @@
 export * from "./reducers/rootReducer";
-export * from "./actions/action";
+export * as actionCreators from "./actions/action";

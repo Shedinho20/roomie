@@ -1,7 +1,7 @@
 import { ActionTypes, Action } from "../types";
 
 interface Istate {
-  theme: string | undefined;
+  theme: string | null;
 }
 const initialstate: Istate = {
   theme: "",

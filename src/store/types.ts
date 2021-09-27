@@ -5,7 +5,7 @@ export enum ActionTypes {
 
 interface THEME {
   type: typeof ActionTypes.THEME;
-  payload: string;
+  payload: string | null;
 }
 interface TOGGLETHEME {
   type: typeof ActionTypes.TOGGLETHEME;

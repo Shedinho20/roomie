@@ -1,0 +1,18 @@
+.search {
+  height: 35px;
+  input {
+    height: 100%;
+    width: 100%;
+    border: none;
+    background-color: var(--input-background);
+    color: var(--textMain-color);
+    border-radius: 5px;
+    padding-left: 15px;
+    &:focus {
+      outline: none !important;
+    }
+    &::placeholder {
+      color: var(--textMain-color);
+    }
+  }
+}
