@@ -3,15 +3,19 @@ import logo from "../../../images/Logo.svg";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import SearchIcon from "@mui/icons-material/Search";
-import { Search } from "../../Atoms";
+import { Button, Search } from "../../Atoms";
 import { ChangeEvent, useState } from "react";
 import { Avatar } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import { useSelector } from "react-redux";
+import { Istate } from "../../../store";
 export const Navbar = () => {
   const [state, setstate] = useState({
     searchDetails: "",
     errr: "",
   });
+
+  const { auth } = useSelector((state: Istate) => state);
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setstate({
       ...state,
@@ -32,14 +36,20 @@ export const Navbar = () => {
         <SearchIcon id="search" />
         <Search type="text" placeholder="Search" name="search" handleChange={handleChange} />
       </div>
-      <div className="userDetails">
-        <div className="userIcons">
-          <NotificationsNoneIcon id="notification" />
-          <FavoriteBorderIcon id="like" />
+      {auth.login ? (
+        <div className="userDetails">
+          <div className="userIcons">
+            <NotificationsNoneIcon id="notification" />
+            <FavoriteBorderIcon id="like" />
+          </div>
+          <div className="divider"></div>
+          <Avatar alt="User Name" src="/static/images/avatar/1.jpg" />
         </div>
-        <div className="divider"></div>
-        <Avatar alt="User Name" src="/static/images/avatar/1.jpg" />
-      </div>
+      ) : (
+        <div className="navBTN">
+          <Button width="150px" label="Open an Account" bckColor="transparent" />
+        </div>
+      )}
       <MenuIcon className="menuIcon" fontSize="large" />
     </div>
   );

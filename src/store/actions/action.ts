@@ -2,6 +2,7 @@ import { ActionTypes, Action } from "../types";
 import { Dispatch } from "redux";
 import { Istate } from "..";
 
+//Theme Actions
 export const setTheme = () => {
   let theme = localStorage.getItem("Theme");
 
@@ -33,5 +34,22 @@ export const toggleTheme = () => {
       type: ActionTypes.TOGGLETHEME,
       payload: newMode,
     });
+  };
+};
+
+//Auth Actions
+
+export const Login = () => {
+  return (dispatch: Dispatch<Action>, getstate: () => Istate) => {
+    dispatch({ type: ActionTypes.LOADING });
+    try {
+      dispatch({
+        type: ActionTypes.LOGIN_SUCESS,
+      });
+    } catch (error) {
+      dispatch({
+        type: ActionTypes.LOGIN_FAIL,
+      });
+    }
   };
 };

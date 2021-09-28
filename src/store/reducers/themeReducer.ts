@@ -1,4 +1,4 @@
-import { ActionTypes, Action } from "../types";
+import { ActionTypes, Theme } from "../types";
 
 interface Istate {
   theme: string | null;
@@ -7,7 +7,7 @@ const initialstate: Istate = {
   theme: "",
 };
 
-const themeReducer = (state = initialstate, action: Action) => {
+const themeReducer = (state = initialstate, action: Theme) => {
   switch (action.type) {
     case ActionTypes.THEME:
       return { ...state, theme: action.payload };
