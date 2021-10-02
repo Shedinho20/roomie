@@ -17,7 +17,7 @@ export const MobileMenu = () => {
   };
   return (
     <div className={`${!navMobile ? "mobile-menu" : "mobile-menu openNavmob"}`} onClick={(e) => handleClick(e)}>
-      <div className="mobNav-container">
+      <div className={`${!navMobile ? "mobNav-container" : "mobNav-container openNavmobIn"}`}>
         {auth.login ? (
           <>
             <Avatar alt="User Name" src="/static/images/avatar/1.jpg" sx={{ width: 80, height: 80 }} />
