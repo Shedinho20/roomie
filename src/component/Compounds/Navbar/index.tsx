@@ -7,21 +7,29 @@ import { Button, Search } from "../../Atoms";
 import { ChangeEvent, useState } from "react";
 import { Avatar } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Istate } from "../../../store";
+import { ActionTypes } from "../../../store/types";
 export const Navbar = () => {
+  const dispatch = useDispatch();
   const [state, setstate] = useState({
     searchDetails: "",
     errr: "",
   });
 
   const { auth } = useSelector((state: Istate) => state);
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setstate({
       ...state,
       [e.target.name]: e.target.value,
     });
   };
+
+  const handleClick = () => {
+    dispatch({ type: ActionTypes.NAVMOIBILE });
+  };
+
   return (
     <div className="Navbar">
       <div className="navbarMain">
@@ -47,10 +55,10 @@ export const Navbar = () => {
         </div>
       ) : (
         <div className="navBTN">
-          <Button width="150px" label="Open an Account" bckColor="transparent" />
+          <Button width="150px" label="Open an Account" bckColor="transparent" border="#2b67f6" />
         </div>
       )}
-      <MenuIcon className="menuIcon" fontSize="large" />
+      <MenuIcon className="menuIcon" fontSize="large" onClick={handleClick} />
     </div>
   );
 };

@@ -3,7 +3,7 @@ export enum ActionTypes {
   THEME = "THEME",
   TOGGLETHEME = "TOGGLETHEME",
   LOADING = "LOADING",
-
+  NAVMOIBILE = "NAVMOBILE",
   //auth
   LOGIN_FAIL = "LOGIN_FAIL",
   LOGIN_SUCESS = "LOGIN_SUCESS",
@@ -21,6 +21,9 @@ interface TOGGLETHEME {
 interface LOADING {
   type: typeof ActionTypes.LOADING;
 }
+interface NAVMOIBILE {
+  type: typeof ActionTypes.NAVMOIBILE;
+}
 
 //Auth types
 interface LOGIN_SUCESS {
@@ -33,5 +36,5 @@ interface LOGIN_FAIL {
 }
 
 export type Auth = LOGIN_SUCESS | LOGIN_FAIL | LOADING;
-export type Theme = THEME | TOGGLETHEME | LOADING;
+export type Theme = THEME | TOGGLETHEME | LOADING | NAVMOIBILE;
 export type Action = Theme | Auth;

@@ -1,6 +1,7 @@
 import { ActionTypes, Action } from "../types";
 import { Dispatch } from "redux";
 import { Istate } from "..";
+import { type } from "os";
 
 //Theme Actions
 export const setTheme = () => {
