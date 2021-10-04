@@ -10,6 +10,7 @@
   display: none;
   backdrop-filter: blur(3px);
   transform: scale(0);
+  z-index: 50;
   @include tablet {
     display: block;
   }
@@ -46,10 +47,11 @@
   }
   .openNavmobIn {
     top: 0px;
-    transition: all 0.4s ease-in;
+    transition: all 0.5s ease-in;
   }
 }
 
 .openNavmob {
   transform: scale(1);
+  transition: all 0.2s linear;
 }

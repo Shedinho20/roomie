@@ -1,0 +1,124 @@
+@import "../../../styles/Screens.scss";
+
+.homesearch {
+  background-color: #febb02;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1.5fr;
+  // grid-gap: 3px;
+  @include tablet {
+    display: grid;
+    grid-template-columns: none;
+  }
+  .searchBox {
+    position: relative;
+    .bed {
+      position: absolute;
+      top: 30%;
+      font-size: 25px;
+      color: var(--textMain-color);
+      left: 15px;
+    }
+    .searchLocation {
+      background-color: var(--input-background2);
+      color: var(--textMain-color);
+
+      width: calc(100% - 6px);
+      border-radius: 2px;
+      margin: 3px;
+      height: 52px;
+      border: none;
+      padding-left: 50px;
+      &:focus {
+        outline: none !important;
+      }
+      &::placeholder {
+        color: var(--textMain-color);
+        font-weight: bold;
+      }
+    }
+    .suggestedLoc {
+      position: absolute;
+      background-color: var(--input-background2);
+      width: calc(100% - 6px);
+      left: 3px;
+      height: 200px;
+      border-radius: 3px;
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.05);
+      z-index: 20;
+    }
+  }
+
+  .calender {
+    position: relative;
+    margin: 3px;
+    margin-left: 0px;
+    height: 52px;
+    background-color: var(--input-background2);
+    cursor: pointer;
+    @include tablet {
+      margin-left: 3px;
+      margin-top: 0px;
+    }
+    .calenderSection {
+      position: absolute;
+      background-color: red;
+      width: 100%;
+      height: 200px;
+      border-radius: 3px;
+      top: 55px;
+      z-index: 20;
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.05);
+      @include tablet {
+        // top: 0;
+      }
+    }
+  }
+  .roomDetials {
+    position: relative;
+    margin: 3px;
+    margin-left: 0px;
+    height: 52px;
+    background-color: var(--input-background2);
+    cursor: pointer;
+    @include tablet {
+      margin-left: 3px;
+      margin-top: 0px;
+    }
+
+    .clickedDetails {
+      position: absolute;
+      width: 100%;
+      background-color: transparent;
+      height: 100%;
+      top: 0;
+    }
+
+    .roomDetialsinner {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      .adults {
+        display: flex;
+        align-items: center;
+        h4 {
+          margin-left: 5px;
+          font-size: 14px;
+        }
+      }
+    }
+    .infoSection {
+      position: absolute;
+      background-color: red;
+      width: 100%;
+      height: 200px;
+      border-radius: 3px;
+      top: 55px;
+      z-index: 20;
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.05);
+    }
+  }
+}
