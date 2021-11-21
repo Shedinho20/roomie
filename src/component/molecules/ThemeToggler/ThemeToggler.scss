@@ -1,0 +1,19 @@
+.ThemeToggler {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  color: var(--textMain-color);
+  cursor: pointer;
+  .lightSwitch {
+    &:hover {
+      color: gold;
+      transition: all 0.3s ease-in-out;
+    }
+  }
+  .darkSwitch {
+    &:hover {
+      color: #1c1f2a;
+      transition: all 0.3s ease-in-out;
+    }
+  }
+}

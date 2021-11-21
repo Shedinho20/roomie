@@ -1,13 +1,25 @@
 import { ActionTypes, Action } from "../types";
 import { Dispatch } from "redux";
 import { Istate } from "..";
+import { type } from "os";
 
-export const setTheme = (mode: string) => {
+//Theme Actions
+export const setTheme = () => {
+  let theme = localStorage.getItem("Theme");
+
+  if (!theme) {
+    if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
+      theme = "light";
+    } else {
+      theme = "dark";
+    }
+  }
+
   return (dispatch: Dispatch<Action>) => {
-    localStorage.setItem("Theme", mode);
+    localStorage.setItem("Theme", theme ? theme : "");
     dispatch({
       type: ActionTypes.THEME,
-      payload: mode,
+      payload: theme,
     });
   };
 };
@@ -23,5 +35,22 @@ export const toggleTheme = () => {
       type: ActionTypes.TOGGLETHEME,
       payload: newMode,
     });
+  };
+};
+
+//Auth Actions
+
+export const Login = () => {
+  return (dispatch: Dispatch<Action>, getstate: () => Istate) => {
+    dispatch({ type: ActionTypes.LOADING });
+    try {
+      dispatch({
+        type: ActionTypes.LOGIN_SUCESS,
+      });
+    } catch (error) {
+      dispatch({
+        type: ActionTypes.LOGIN_FAIL,
+      });
+    }
   };
 };

@@ -1,0 +1,94 @@
+@import "../../../styles/Screens.scss";
+
+.Navbar {
+  background-color: var(--nav-background);
+  position: fixed;
+  top: 0;
+  height: 70px;
+  width: 100%;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5vw;
+  .navbarMain {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .logo {
+      display: flex;
+      align-items: flex-end;
+      #logo {
+        margin-right: 5px;
+        @include tablet {
+          width: 30px;
+        }
+      }
+      h3 {
+        letter-spacing: 0.8px;
+        color: var(--textMain-color);
+        span {
+          color: var(--textSec-color);
+        }
+      }
+    }
+  }
+  .searchField {
+    position: relative;
+    width: 300px;
+    @include tablet {
+      width: 250px;
+    }
+
+    @include phone {
+      display: none;
+    }
+
+    #search {
+      position: absolute;
+      left: 90%;
+      top: 6px;
+      color: var(--textMain-color);
+      @include tablet {
+        left: 88%;
+      }
+    }
+  }
+  .userDetails {
+    width: max-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include tablet {
+      display: none;
+    }
+    .divider {
+      width: 0.1px;
+      height: 30px;
+      opacity: 0.4;
+      background-color: var(--textMain-color);
+      margin: 0 30px;
+    }
+    #like {
+      width: 40%;
+    }
+    #notification {
+      width: 40%;
+      margin-right: 10px;
+      color: var(--main-color);
+    }
+  }
+  .navBTN {
+    @include tablet {
+      display: none;
+    }
+  }
+  .menuIcon {
+    display: none;
+    color: var(--main-color);
+    cursor: pointer;
+    @include tablet {
+      display: block;
+    }
+  }
+}
