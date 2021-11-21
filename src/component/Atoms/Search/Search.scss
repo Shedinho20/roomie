@@ -8,6 +8,9 @@
     color: var(--textMain-color);
     border-radius: 5px;
     padding-left: 15px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
     &:focus {
       outline: none !important;
     }
