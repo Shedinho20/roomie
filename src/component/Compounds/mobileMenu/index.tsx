@@ -11,7 +11,6 @@ export const MobileMenu = () => {
   const dispatch = useDispatch();
   const { theme, auth } = useSelector((state: Istate) => state);
   const { navMobile } = theme;
-  console.log(auth.login);
   const handleClick = (e: any) => {
     e.target.className === "mobile-menu openNavmob" && dispatch({ type: ActionTypes.NAVMOIBILE });
   };

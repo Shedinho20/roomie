@@ -4,6 +4,7 @@ export enum ActionTypes {
   TOGGLETHEME = "TOGGLETHEME",
   LOADING = "LOADING",
   NAVMOIBILE = "NAVMOBILE",
+  SEARCHFOCUS = "SEARCHFOCUS",
   //auth
   LOGIN_FAIL = "LOGIN_FAIL",
   LOGIN_SUCESS = "LOGIN_SUCESS",
@@ -24,6 +25,9 @@ interface LOADING {
 interface NAVMOIBILE {
   type: typeof ActionTypes.NAVMOIBILE;
 }
+interface SEARCHFOCUS {
+  type: typeof ActionTypes.SEARCHFOCUS;
+}
 
 //Auth types
 interface LOGIN_SUCESS {
@@ -36,5 +40,5 @@ interface LOGIN_FAIL {
 }
 
 export type Auth = LOGIN_SUCESS | LOGIN_FAIL | LOADING;
-export type Theme = THEME | TOGGLETHEME | LOADING | NAVMOIBILE;
+export type Theme = THEME | TOGGLETHEME | LOADING | NAVMOIBILE | SEARCHFOCUS;
 export type Action = Theme | Auth;
