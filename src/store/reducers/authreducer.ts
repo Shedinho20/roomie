@@ -1,8 +1,8 @@
 import { ActionTypes, Auth } from "../types";
 
 interface Istate {
-  login: Boolean;
-  loading: Boolean;
+  login: boolean;
+  loading: boolean;
 }
 const initialstate: Istate = {
   login: false,

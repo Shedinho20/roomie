@@ -45,6 +45,7 @@ export const Login = () => {
     try {
       dispatch({
         type: ActionTypes.LOGIN_SUCESS,
+        payload: "hi",
       });
     } catch (error) {
       dispatch({
