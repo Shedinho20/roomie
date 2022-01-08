@@ -4,6 +4,7 @@ import { bindActionCreators } from "redux";
 import { MobileMenu, Navbar } from "./component/Compounds";
 import { ThemeToggler } from "./component/molecules";
 import { Home } from "./pages";
+import { MainRoutes } from "./routes/MainRoutes";
 import { actionCreators, Istate } from "./store";
 import "./styles/App.scss";
 
@@ -22,7 +23,7 @@ function App() {
       <Navbar />
       <MobileMenu />
       <ThemeToggler />
-      <Home />
+      <MainRoutes />
     </div>
   );
 }
