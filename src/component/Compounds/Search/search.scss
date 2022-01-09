@@ -51,7 +51,7 @@
     .suggestedLoc {
       position: absolute;
       background-color: #ffffff;
-      width: calc(100% - 6px);
+      width: 140%;
       left: 3px;
       height: 200px;
       border-radius: 3px;
@@ -61,6 +61,9 @@
       transform: scale(0);
       transition: all 0.3s ease-in;
       opacity: 0;
+      @include tablet {
+        width: calc(100% - 6px);
+      }
     }
 
     .suggestedLocOpen {
@@ -129,16 +132,20 @@
     .infoSection {
       position: absolute;
       background-color: #ffffff;
-      width: 100%;
+      width: 140%;
       height: 200px;
       border-radius: 3px;
       top: 55px;
+      right: 0;
       z-index: 20;
       box-shadow: 0px 5px 5px -3px rgb(0 0 0 / 20%), 0px 8px 10px 1px rgb(0 0 0 / 14%),
         0px 3px 14px 2px rgb(0 0 0 / 12%);
-      transform: scale(0.8);
+      transform: scale(0);
       transition: all 0.3s ease-in;
       opacity: 0;
+      @include tablet {
+        width: 100%;
+      }
     }
     .infoSectionOpen {
       transform: scale(1);

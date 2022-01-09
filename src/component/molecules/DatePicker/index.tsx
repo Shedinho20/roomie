@@ -8,15 +8,16 @@ interface calProps {
   check: any;
   onChange: (newValue: any) => void;
   handleCheck: () => void;
+  minDate: any;
 }
-export const Datepicker = ({ calender, check, onChange, handleCheck, checkout }: calProps) => {
+export const Datepicker = ({ calender, check, onChange, handleCheck, checkout, minDate }: calProps) => {
   return (
     <div>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <DesktopDatePicker
           //@ts-ignore
           cancelText=""
-          minDate={new Date()}
+          minDate={minDate}
           showToolbar={false}
           PopperProps={{
             placement: "bottom-start",

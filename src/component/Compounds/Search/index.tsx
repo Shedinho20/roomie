@@ -15,7 +15,6 @@ export const Search = () => {
     RefDet,
     searchBoxRef,
     state,
-    setstate,
     handleChange,
     handlefocus,
     handleClickinside,
@@ -46,6 +45,7 @@ export const Search = () => {
           onChange={onChange}
           handleCheck={handleClickin}
           checkout={false}
+          minDate={new Date()}
         />
       </div>
       <div>
@@ -55,6 +55,7 @@ export const Search = () => {
           onChange={onChangeout}
           handleCheck={handleClickout}
           checkout={true}
+          minDate={state.checkIn}
         />
       </div>
       <div className="roomDetials">
