@@ -59,19 +59,24 @@ export const useSearch = () => {
       locationFocus: false,
     });
   };
+
+  const handleClickAwayIn = () => {
+    setstate({
+      ...state,
+      calenderCheckin: false,
+    });
+  };
+  const handleClickAwayOut = () => {
+    setstate({
+      ...state,
+      calenderCheckOut: false,
+    });
+  };
   const handleClickOutside = (e: any) => {
     if (e.target.className === "searchLocation" && state.adultInfo !== true) return;
     if (e.target.className === "infoSection infoSectionOpen") return;
-    if (e.target.className === "MuiDialog-container MuiDialog-scrollPaper css-hz1bth-MuiDialog-container") {
-      setstate({
-        ...state,
-        calenderCheckin: false,
-        calenderCheckOut: false,
-      });
-    }
     if (e.target.className === "infoSection") return;
     if (state.calenderCheckin) return;
-
     if (null !== RefDet.current) {
       if (!RefDet.current.contains(e.target)) {
         setstate({
@@ -140,5 +145,7 @@ export const useSearch = () => {
     handlefocus,
     handleClickinside,
     handleClickin,
+    handleClickAwayIn,
+    handleClickAwayOut,
   };
 };

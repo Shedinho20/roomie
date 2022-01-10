@@ -2,12 +2,12 @@ import "./button.scss";
 
 interface Props {
   width: string;
-  label: string;
+  children: React.ReactNode;
   bckColor: string;
   border?: string;
 }
 
-export const Button: React.FC<Props> = ({ width, label, bckColor, border }) => {
+export const Button: React.FC<Props> = ({ width, children, bckColor, border }) => {
   const style = {
     width: `${width}`,
     backgroundColor: `${bckColor}`,
@@ -16,7 +16,7 @@ export const Button: React.FC<Props> = ({ width, label, bckColor, border }) => {
 
   return (
     <button className="button" style={style}>
-      {label}
+      {children}
     </button>
   );
 };

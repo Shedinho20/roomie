@@ -160,6 +160,15 @@
     position: absolute;
     bottom: 0;
   }
+  .submitBtn {
+    position: absolute;
+    top: 150%;
+    left: calc(50% - 125px);
+    @include tablet {
+      top: 110%;
+      left: calc(50% - 125px);
+    }
+  }
 }
 
 h4 {

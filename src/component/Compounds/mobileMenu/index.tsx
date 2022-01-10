@@ -28,9 +28,13 @@ export const MobileMenu = () => {
         ) : (
           <>
             <div style={{ marginBottom: "10px" }}>
-              <Button width="120px" label="Sign up" bckColor="#27ae60" />
+              <Button width="120px" bckColor="#27ae60">
+                Sign up
+              </Button>
             </div>
-            <Button width="120px" label="Sign in" bckColor="#2b67f6" />
+            <Button width="120px" bckColor="#2b67f6">
+              Sign in
+            </Button>
           </>
         )}
       </div>

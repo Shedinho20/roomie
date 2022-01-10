@@ -55,7 +55,9 @@ export const Navbar = () => {
         </div>
       ) : (
         <div className="navBTN">
-          <Button width="150px" label="Open an Account" bckColor="transparent" border="#2b67f6" />
+          <Button width="150px" bckColor="transparent" border="#2b67f6">
+            Open an Account
+          </Button>
         </div>
       )}
       <MenuIcon className="menuIcon" fontSize="large" onClick={handleClick} />

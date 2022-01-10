@@ -4,6 +4,7 @@ import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import HouseSidingIcon from "@mui/icons-material/HouseSiding";
 import { Datepicker } from "../../molecules/DatePicker";
 import { useSearch } from "./useSearch";
+import { Button } from "../../Atoms";
 
 export const Search = () => {
   const {
@@ -11,7 +12,6 @@ export const Search = () => {
     onChange,
     onChangeout,
     handleBlur,
-    handleClickOutside,
     RefDet,
     searchBoxRef,
     state,
@@ -19,6 +19,8 @@ export const Search = () => {
     handlefocus,
     handleClickinside,
     handleClickin,
+    handleClickAwayIn,
+    handleClickAwayOut,
   } = useSearch();
 
   return (
@@ -38,17 +40,18 @@ export const Search = () => {
         />
         <div className={`${!state.locationFocus ? "suggestedLoc" : "suggestedLoc suggestedLocOpen"}`}></div>
       </div>
-      <div>
+      <div className="checkIn">
         <Datepicker
           calender={state.calenderCheckin}
           check={state.checkIn}
           onChange={onChange}
           handleCheck={handleClickin}
+          handleClickAway={handleClickAwayIn}
           checkout={false}
           minDate={new Date()}
         />
       </div>
-      <div>
+      <div className="checkOut">
         <Datepicker
           calender={state.calenderCheckOut}
           check={state.checkOut}
@@ -56,6 +59,7 @@ export const Search = () => {
           handleCheck={handleClickout}
           checkout={true}
           minDate={state.checkIn}
+          handleClickAway={handleClickAwayOut}
         />
       </div>
       <div className="roomDetials">
@@ -71,6 +75,11 @@ export const Search = () => {
         </div>
         <div className="clickedDetails" ref={RefDet} onClick={handleClickinside}></div>
         <div className={`${!state.adultInfo ? "infoSection" : "infoSection infoSectionOpen"}`}></div>
+      </div>
+      <div className="submitBtn">
+        <Button width="250px" bckColor="#2b67f6" border="#2b67f6">
+          <h3>Search</h3>
+        </Button>
       </div>
     </div>
   );
