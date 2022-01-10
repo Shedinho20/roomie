@@ -10,8 +10,10 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useSelector, useDispatch } from "react-redux";
 import { Istate } from "../../../store";
 import { ActionTypes } from "../../../store/types";
+import { useNavigate } from "react-router-dom";
 export const Navbar = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [state, setstate] = useState({
     searchDetails: "",
     errr: "",
@@ -54,7 +56,7 @@ export const Navbar = () => {
           <Avatar alt="User Name" src="/static/images/avatar/1.jpg" />
         </div>
       ) : (
-        <div className="navBTN">
+        <div className="navBTN" onClick={() => navigate("/register")}>
           <Button width="150px" bckColor="transparent" border="#2b67f6">
             Open an Account
           </Button>
