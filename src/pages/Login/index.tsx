@@ -42,12 +42,3 @@ export const LoginPage = () => {
     </Container>
   );
 };
-
-// type={type}
-// name={name}
-// style={{ paddingRight }}
-// placeholder={placeholder}
-// value={value}
-// onChange={onChange}
-// disabled={disabled}
-// autoComplete={autoComplete}

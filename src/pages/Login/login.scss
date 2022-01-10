@@ -1,0 +1,13 @@
+.loginPage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .loginForm {
+    width: 80%;
+    max-width: 450px;
+  }
+  span {
+    font-size: 0.9rem;
+  }
+}

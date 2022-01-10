@@ -4,7 +4,7 @@ export const Container: React.FunctionComponent = ({ children }) => {
   return (
     <div
       style={{
-        padding: "0 5vw",
+        padding: "5vw",
       }}
     >
       {children}

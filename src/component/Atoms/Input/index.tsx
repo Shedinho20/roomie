@@ -22,12 +22,12 @@ export const Field: React.FC<BaseInputProps> = ({
   label,
 }) => {
   return (
-    <div>
+    <div style={{ width: "100%" }}>
       <p className={`${error ? "error-message label" : "label"}`}>{label}</p>
       <input
         type={type}
         name={name}
-        className={`${error ? "error" : ""}`}
+        className={`${error ? "input error" : "input"}`}
         placeholder={placeholder}
         value={value}
         onChange={onChange}

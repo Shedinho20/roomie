@@ -4,7 +4,7 @@
   font-family: "Roboto", sans-serif;
 }
 
-input {
+.input {
   padding: 1em 1.5em;
   outline: none;
   transition: 0.3s ease-in-out;
@@ -12,7 +12,7 @@ input {
   background-color: var(--input-background);
   border-radius: 3px;
   color: var(--textMain-color);
-  // width: 100%;
+  width: 100%;
 }
 
 .label {
