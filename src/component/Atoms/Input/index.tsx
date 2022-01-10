@@ -11,7 +11,7 @@ type BaseInputProps = {
   label: string;
 };
 
-export const Input: React.FunctionComponent<BaseInputProps> = ({
+export const Field: React.FC<BaseInputProps> = ({
   type,
   name,
   placeholder,
