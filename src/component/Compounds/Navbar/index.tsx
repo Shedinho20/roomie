@@ -56,8 +56,8 @@ export const Navbar = () => {
           <Avatar alt="User Name" src="/static/images/avatar/1.jpg" />
         </div>
       ) : (
-        <div className="navBTN" onClick={() => navigate("/register")}>
-          <Button width="150px" bckColor="transparent" border="#2b67f6">
+        <div className="navBTN">
+          <Button width="150px" bckColor="transparent" border="#2b67f6" onClick={() => navigate("/register")}>
             Open an Account
           </Button>
         </div>

@@ -1,3 +1,5 @@
+import { DocumentData, DocumentSnapshot } from "firebase/firestore";
+
 export enum ActionTypes {
   //theme
   THEME = "THEME",
@@ -32,11 +34,11 @@ interface SEARCHFOCUS {
 //Auth types
 interface LOGIN_SUCESS {
   type: typeof ActionTypes.LOGIN_SUCESS;
-  payload?: string | null;
+  payload: string | DocumentSnapshot<DocumentData>;
 }
 interface LOGIN_FAIL {
   type: typeof ActionTypes.LOGIN_FAIL;
-  payload?: string | null;
+  payload: string | DocumentSnapshot<DocumentData>;
 }
 
 export type Auth = LOGIN_SUCESS | LOGIN_FAIL | LOADING;

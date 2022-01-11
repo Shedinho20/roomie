@@ -5,12 +5,15 @@ import App from "./App";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 import { BrowserRouter as Router } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 ReactDOM.render(
   <Router>
     <Provider store={store}>
       <React.StrictMode>
         <App />
+        <ToastContainer />
       </React.StrictMode>
     </Provider>
   </Router>,
