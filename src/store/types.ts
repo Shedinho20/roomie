@@ -10,6 +10,7 @@ export enum ActionTypes {
   //auth
   LOGIN_FAIL = "LOGIN_FAIL",
   LOGIN_SUCESS = "LOGIN_SUCESS",
+  ISAUTH = "ISAUTH",
 }
 
 //Theme types
@@ -34,13 +35,17 @@ interface SEARCHFOCUS {
 //Auth types
 interface LOGIN_SUCESS {
   type: typeof ActionTypes.LOGIN_SUCESS;
-  payload: string | DocumentSnapshot<DocumentData>;
+  payload?: string | DocumentSnapshot<DocumentData>;
 }
 interface LOGIN_FAIL {
   type: typeof ActionTypes.LOGIN_FAIL;
   payload: string | DocumentSnapshot<DocumentData>;
 }
+interface ISAUTH {
+  type: typeof ActionTypes.ISAUTH;
+  payload?: string | DocumentSnapshot<DocumentData>;
+}
 
-export type Auth = LOGIN_SUCESS | LOGIN_FAIL | LOADING;
+export type Auth = LOGIN_SUCESS | LOGIN_FAIL | LOADING | ISAUTH;
 export type Theme = THEME | TOGGLETHEME | LOADING | NAVMOIBILE | SEARCHFOCUS;
 export type Action = Theme | Auth;

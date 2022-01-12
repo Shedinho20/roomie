@@ -1,13 +1,16 @@
-import React, { ChangeEvent, useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { ChangeEvent, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { validateFormSubmit, validators } from "../../services/validator";
-import { actionCreators } from "../../store";
+import { actionCreators, Istate } from "../../store";
 
 export const useLogin = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { Login } = bindActionCreators(actionCreators, dispatch);
+  const { auth } = useSelector((state: Istate) => state);
 
   const [formData, setformData] = useState({
     email: "",
@@ -37,6 +40,10 @@ export const useLogin = () => {
 
     Login(formData);
   };
-
+  useEffect(() => {
+    if (auth.login) {
+      navigate("/");
+    }
+  }, [auth.login]);
   return { formData, onUpdateFormData, formError, onSubmitFormData };
 };
