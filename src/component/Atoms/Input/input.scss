@@ -1,0 +1,30 @@
+@import "../../../styles/Screens.scss";
+
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+.input {
+  padding: 1em 1.5em;
+  outline: none;
+  transition: 0.3s ease-in-out;
+  border: 1px solid var(--main-color);
+  background-color: var(--input-background);
+  border-radius: 3px;
+  color: var(--textMain-color);
+  width: 100%;
+}
+
+.label {
+  font-size: 1rem;
+  margin-bottom: 0.1em;
+}
+
+.error {
+  border: 1px solid rgb(193, 40, 40);
+  color: rgb(193, 40, 40);
+}
+.error-message {
+  color: rgb(193, 40, 40);
+  font-size: 1em;
+}

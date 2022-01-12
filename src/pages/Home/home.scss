@@ -1,0 +1,31 @@
+@import "../../styles/Screens.scss";
+
+$a: 70px;
+
+.home {
+  .homeText {
+    margin: 50px 0;
+    h3 {
+      font-size: 24px;
+      line-height: 40px;
+      letter-spacing: 0.2px;
+      color: var(--textMain-color);
+      @include phone {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+    }
+    h4 {
+      font-size: 18px;
+      line-height: 32px;
+      font-weight: 300;
+      letter-spacing: 0.2px;
+      color: var(--textMain-color);
+    }
+  }
+  .homeBg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,185 @@
+@import "../../../styles/Screens.scss";
+
+.homesearch {
+  position: relative;
+  white-space: nowrap;
+  background-color: #febb02;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1.5fr 1.6fr;
+  @include tablet {
+    grid-template-columns: none;
+  }
+  .searchBox {
+    position: relative;
+    .bed {
+      position: absolute;
+      top: 30%;
+      font-size: 25px;
+      color: var(--textSec-color);
+      left: 15px;
+    }
+    .searchLocation {
+      background-color: var(--input-background2);
+      color: var(--textMain-color);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.4px;
+      width: calc(100% - 6px);
+      font-family: "Roboto", sans-serif;
+      border-radius: 2px;
+      margin: 3px;
+      height: 52px;
+      border: none;
+      padding-left: 50px;
+      @include tablet {
+        font-size: 12px !important;
+      }
+      &:focus {
+        outline: none !important;
+      }
+      &::placeholder {
+        color: var(--textMain-color);
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.4px;
+        @include tablet {
+          font-size: 12px !important;
+        }
+      }
+    }
+    .suggestedLoc {
+      position: absolute;
+      background-color: #ffffff;
+      width: 140%;
+      left: 3px;
+      height: 200px;
+      border-radius: 3px;
+      box-shadow: 0px 5px 5px -3px rgb(0 0 0 / 20%), 0px 8px 10px 1px rgb(0 0 0 / 14%),
+        0px 3px 14px 2px rgb(0 0 0 / 12%);
+      z-index: 20;
+      transform: scale(0);
+      transition: all 0.3s ease-in;
+      opacity: 0;
+      @include tablet {
+        width: calc(100% - 6px);
+      }
+    }
+
+    .suggestedLocOpen {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .roomDetials {
+    position: relative;
+    margin: 3px;
+    margin-left: 0px;
+    height: 52px;
+    background-color: var(--input-background2);
+    cursor: pointer;
+    @include tablet {
+      margin-left: 3px;
+      margin-top: 0px;
+    }
+
+    .clickedDetails {
+      position: absolute;
+      width: 100%;
+      background-color: transparent;
+      height: 100%;
+      top: 0;
+    }
+
+    .roomDetialsinner {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-left: 15px;
+      .adults {
+        display: flex;
+        align-items: center;
+        color: var(--textSec-color);
+        h4 {
+          color: var(--textMain-color);
+          margin-left: 10px;
+          font-size: 14px;
+          font-weight: 500;
+          letter-spacing: 0.4px;
+        }
+      }
+      .rooms {
+        display: flex;
+        align-items: center;
+        margin-left: 45px;
+        @include tablet {
+          margin-left: 95px;
+        }
+        color: var(--textSec-color);
+        h4 {
+          color: var(--textMain-color);
+          margin-left: 10px;
+          font-size: 14px;
+          font-weight: 500;
+          letter-spacing: 0.4px;
+        }
+      }
+    }
+    .infoSection {
+      position: absolute;
+      background-color: #ffffff;
+      width: 140%;
+      height: 200px;
+      border-radius: 3px;
+      top: 55px;
+      right: 0;
+      z-index: 20;
+      box-shadow: 0px 5px 5px -3px rgb(0 0 0 / 20%), 0px 8px 10px 1px rgb(0 0 0 / 14%),
+        0px 3px 14px 2px rgb(0 0 0 / 12%);
+      transform: scale(0);
+      transition: all 0.3s ease-in;
+      opacity: 0;
+      @include tablet {
+        width: 100%;
+      }
+    }
+    .infoSectionOpen {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  .dateCheckin {
+    font-size: 40px;
+    background-color: red;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+  }
+  .submitBtn {
+    position: absolute;
+    top: 150%;
+    left: calc(50% - 125px);
+    @include tablet {
+      top: 110%;
+      left: calc(50% - 125px);
+    }
+  }
+}
+
+h4 {
+  @include tablet {
+    font-size: 12px !important;
+  }
+}
+
+.inputDemo {
+  background-color: red;
+  position: absolute;
+  height: 50px;
+  visibility: hidden;
+}
