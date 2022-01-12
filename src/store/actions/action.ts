@@ -1,6 +1,10 @@
 import { ActionTypes, Action } from "../types";
 import { Dispatch } from "redux";
 import { Istate } from "..";
+import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { auth, db } from "../../services/firebase";
+import { doc, getDoc } from "firebase/firestore";
+import { toast } from "react-toastify";
 
 //Theme Actions
 export const setTheme = () => {
@@ -39,18 +43,44 @@ export const toggleTheme = () => {
 
 //Auth Actions
 
-export const Login = () => {
-  return (dispatch: Dispatch<Action>, getstate: () => Istate) => {
+export const Login = (formData: Record<string, string>) => {
+  const { password, email } = formData;
+  return async (dispatch: Dispatch<Action>, getstate: () => Istate) => {
     dispatch({ type: ActionTypes.LOADING });
     try {
+      const { user } = await signInWithEmailAndPassword(auth, email, password);
+      // const userInfo = await getDoc(doc(db, `users/${user.uid}`));
+
       dispatch({
         type: ActionTypes.LOGIN_SUCESS,
-        payload: "hi",
+        payload: "userInfo",
       });
-    } catch (error) {
+    } catch (error: any) {
+      if (error.code === "auth/user-not-found") {
+        toast.error("User not found");
+      }
+      if (error.code === "auth/network-request-failed") {
+        toast.error("Something went wrong");
+      }
       dispatch({
         type: ActionTypes.LOGIN_FAIL,
+        payload: error.code,
       });
+    } finally {
+      dispatch({ type: ActionTypes.LOADING });
     }
+  };
+};
+
+export const isAuthed = () => {
+  return (dispatch: Dispatch<Action>) => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        dispatch({
+          type: ActionTypes.LOGIN_SUCESS,
+        });
+      }
+      dispatch({ type: ActionTypes.ISAUTH });
+    });
   };
 };

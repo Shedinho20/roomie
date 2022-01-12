@@ -1,5 +1,6 @@
 import { Container, Spacer } from "../../component/Atoms";
 import { Search } from "../../component/Compounds";
+import { auth } from "../../services/firebase";
 import "./home.scss";
 
 export const Home = () => {
