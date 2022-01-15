@@ -1,6 +1,7 @@
 import validator from "validator";
 
 export type ValidationType = Record<string, (...args: (string | any)[]) => string | undefined>;
+// export type ValidationType = Record<string, (a: string, b: any) => string | undefined>;
 
 export const validators: ValidationType = {
   email: (email: string) => {
@@ -21,6 +22,7 @@ export const validators: ValidationType = {
       return "Password is weak";
     }
   },
+
   verifyPassword: (verifyPassword: string, { password }: Record<string, string>) => {
     if (validator.isEmpty(verifyPassword)) {
       return "Password is required";

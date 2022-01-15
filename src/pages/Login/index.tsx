@@ -18,7 +18,6 @@ export const LoginPage = () => {
         navigate("/")
       ) : (
         <Container>
-          <Spacer height="15rem" />
           <div className="loginPage">
             <form className="loginForm" autoComplete="off">
               <Field

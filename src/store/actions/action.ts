@@ -75,6 +75,7 @@ export const Login = (formData: Record<string, string>) => {
 export const isAuthed = () => {
   return (dispatch: Dispatch<Action>) => {
     onAuthStateChanged(auth, (user) => {
+      console.log(user);
       if (user) {
         dispatch({
           type: ActionTypes.LOGIN_SUCESS,

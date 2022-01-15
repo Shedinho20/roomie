@@ -1,26 +1,31 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { bindActionCreators } from "redux";
 import { validateFormSubmit, validators } from "../../services/validator";
 import { actionCreators, Istate } from "../../store";
 
-export const useLogin = () => {
+export const useRegister = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { Login } = bindActionCreators(actionCreators, dispatch);
+  const {} = bindActionCreators(actionCreators, dispatch);
   const { auth } = useSelector((state: Istate) => state);
 
   const [formData, setformData] = useState({
     email: "",
     password: "",
+    verifyPassword: "",
   });
 
   const [formError, setformError] = useState({
     email: "",
     password: "",
+    verifyPassword: "",
   });
+
+  const [isAgreed, setisAgreed] = useState(false);
 
   const onUpdateFormData = (e: ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
@@ -30,20 +35,25 @@ export const useLogin = () => {
     setformError((formError) => ({ ...formError, [name]: error }));
   };
 
+  const onUpdateChecked = () => {
+    setisAgreed((isAgreed) => !isAgreed);
+  };
   const onSubmitFormData = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
+
     const { errors, isValid } = validateFormSubmit(formData);
     setformError(errors);
     if (!isValid) {
       return;
     }
-
-    Login(formData);
+    if (!isAgreed) {
+      toast.error("Agree to terms and conditions");
+    }
   };
   useEffect(() => {
     if (auth.login) {
       navigate("/");
     }
-  }, [auth.login]);
-  return { formData, onUpdateFormData, formError, onSubmitFormData };
+  }, [auth.login]); //Is it necessary to tie this to auth.login ?
+  return { isAgreed, onUpdateChecked, formData, onUpdateFormData, formError, onSubmitFormData };
 };
