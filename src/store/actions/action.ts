@@ -5,6 +5,7 @@ import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebas
 import { auth, db } from "../../services/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
+import moment from "moment";
 
 //Theme Actions
 export const setTheme = () => {
@@ -75,8 +76,13 @@ export const Login = (formData: Record<string, string>) => {
 export const isAuthed = () => {
   return (dispatch: Dispatch<Action>) => {
     onAuthStateChanged(auth, (user) => {
-      console.log(user);
-      if (user) {
+      const dateToCheck = moment(user?.metadata.lastSignInTime).add(5, "hours");
+
+      if (moment().isAfter(dateToCheck)) {
+        signOut(auth);
+      }
+
+      if (user && !moment().isAfter(dateToCheck)) {
         dispatch({
           type: ActionTypes.LOGIN_SUCESS,
         });

@@ -48,12 +48,15 @@ export const useRegister = () => {
     }
     if (!isAgreed) {
       toast.error("Agree to terms and conditions");
+      return;
     }
   };
+
   useEffect(() => {
     if (auth.login) {
       navigate("/");
     }
-  }, [auth.login]); //Is it necessary to tie this to auth.login ?
+  }, [auth.login]);
+
   return { isAgreed, onUpdateChecked, formData, onUpdateFormData, formError, onSubmitFormData };
 };

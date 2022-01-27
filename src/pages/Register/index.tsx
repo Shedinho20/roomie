@@ -53,7 +53,7 @@ export const RegisterPage = () => {
               <Spacer height={30} />
               <div className="registerCheckbox">
                 <input type="checkbox" checked={isAgreed} onChange={onUpdateChecked} name="isAgreed" />
-                <span>Agree to terms and conditions</span>
+                <span>I agree to terms and conditions</span>
               </div>
               <Spacer height={10} />
               <Button width="150px" bckColor="#2b67f6" onClick={onSubmitFormData} disabled={loading}>

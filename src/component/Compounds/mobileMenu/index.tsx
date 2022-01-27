@@ -20,6 +20,7 @@ export const MobileMenu = () => {
     navigate(route);
     dispatch({ type: ActionTypes.NAVMOIBILE });
   };
+
   return (
     <div className={`${!navMobile ? "mobile-menu" : "mobile-menu openNavmob"}`} onClick={(e) => handleClick(e)}>
       <div className={`${!navMobile ? "mobNav-container" : "mobNav-container openNavmobIn"}`}>

@@ -14,7 +14,6 @@ const initialstate: Istate = {
 const authReducer = (state = initialstate, action: Auth) => {
   switch (action.type) {
     case ActionTypes.LOGIN_SUCESS:
-      console.log(11);
       return { ...state, login: true };
     case ActionTypes.LOGIN_FAIL:
       return { ...state, login: false };
