@@ -20,6 +20,8 @@ export const RegisterPage = () => {
         <Container>
           <div className="registerPage">
             <form className="registerForm" autoComplete="off">
+              <h1>Sign Up</h1>
+              <Spacer height={20} />
               <Field
                 label="E-mail"
                 type="text"

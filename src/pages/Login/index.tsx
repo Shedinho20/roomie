@@ -20,6 +20,8 @@ export const LoginPage = () => {
         <Container>
           <div className="loginPage">
             <form className="loginForm" autoComplete="off">
+              <h1>Login</h1>
+              <Spacer height={20} />
               <Field
                 label="E-mail"
                 type="text"

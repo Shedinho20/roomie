@@ -35,11 +35,11 @@ export const MobileMenu = () => {
         ) : (
           <>
             <div style={{ marginBottom: "10px" }}>
-              <Button width="120px" bckColor="#27ae60" onClick={() => navigateTo("/register")}>
+              <Button width="120px" bckColor="#27ae60" onClick={() => navigateTo("auth/register")}>
                 Sign up
               </Button>
             </div>
-            <Button width="120px" bckColor="#2b67f6" onClick={() => navigateTo("/login")}>
+            <Button width="120px" bckColor="#2b67f6" onClick={() => navigateTo("auth/login")}>
               Sign in
             </Button>
           </>

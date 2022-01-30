@@ -10,7 +10,7 @@ export const useRegister = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const {} = bindActionCreators(actionCreators, dispatch);
+  const { Register } = bindActionCreators(actionCreators, dispatch);
   const { auth } = useSelector((state: Istate) => state);
 
   const [formData, setformData] = useState({
@@ -40,7 +40,6 @@ export const useRegister = () => {
   };
   const onSubmitFormData = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-
     const { errors, isValid } = validateFormSubmit(formData);
     setformError(errors);
     if (!isValid) {
@@ -50,6 +49,7 @@ export const useRegister = () => {
       toast.error("Agree to terms and conditions");
       return;
     }
+    Register(formData);
   };
 
   useEffect(() => {

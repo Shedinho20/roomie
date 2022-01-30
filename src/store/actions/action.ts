@@ -1,9 +1,9 @@
 import { ActionTypes, Action } from "../types";
 import { Dispatch } from "redux";
 import { Istate } from "..";
-import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth, db } from "../../services/firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, serverTimestamp, setDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import moment from "moment";
 
@@ -46,7 +46,7 @@ export const toggleTheme = () => {
 
 export const Login = (formData: Record<string, string>) => {
   const { password, email } = formData;
-  return async (dispatch: Dispatch<Action>, getstate: () => Istate) => {
+  return async (dispatch: Dispatch<Action>) => {
     dispatch({ type: ActionTypes.LOADING });
     try {
       const { user } = await signInWithEmailAndPassword(auth, email, password);
@@ -73,10 +73,34 @@ export const Login = (formData: Record<string, string>) => {
   };
 };
 
+export const Register = (formData: Record<string, string>) => {
+  const { password, email } = formData;
+
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({ type: ActionTypes.LOADING });
+    try {
+      const { user } = await createUserWithEmailAndPassword(auth, email, password);
+      await setDoc(doc(db, `users/${user.uid}`), {
+        id: user.uid,
+        email,
+        created: serverTimestamp(),
+      });
+    } catch (error: any) {
+      if (error.code === "auth/email-already-in-use") {
+        toast.error("User already exist");
+      } else {
+        toast.error("Something went wrong");
+      }
+    } finally {
+      dispatch({ type: ActionTypes.LOADING });
+    }
+  };
+};
+
 export const isAuthed = () => {
   return (dispatch: Dispatch<Action>) => {
     onAuthStateChanged(auth, (user) => {
-      const dateToCheck = moment(user?.metadata.lastSignInTime).add(5, "hours");
+      const dateToCheck = moment(user?.metadata.lastSignInTime).add(20, "minutes");
 
       if (moment().isAfter(dateToCheck)) {
         signOut(auth);
