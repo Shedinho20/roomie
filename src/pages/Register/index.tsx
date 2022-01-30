@@ -14,57 +14,53 @@ export const RegisterPage = () => {
 
   return (
     <>
-      {login ? (
-        navigate("/")
-      ) : (
-        <Container>
-          <div className="registerPage">
-            <form className="registerForm" autoComplete="off">
-              <h1>Sign Up</h1>
-              <Spacer height={20} />
-              <Field
-                label="E-mail"
-                type="text"
-                name="email"
-                value={formData.email}
-                error={formError.email}
-                onChange={onUpdateFormData}
-                autoComplete="off"
-                placeholder="abc@roomie.com"
-              />
-              <Spacer height={20} />
-              <Field
-                label="Password"
-                type="password"
-                name="password"
-                value={formData.password}
-                error={formError.password}
-                onChange={onUpdateFormData}
-                autoComplete="off"
-              />
-              <Spacer height={20} />
-              <Field
-                label="Verify password"
-                type="password"
-                name="verifyPassword"
-                value={formData.verifyPassword}
-                error={formError.verifyPassword}
-                onChange={onUpdateFormData}
-                autoComplete="off"
-              />
-              <Spacer height={30} />
-              <div className="registerCheckbox">
-                <input type="checkbox" checked={isAgreed} onChange={onUpdateChecked} name="isAgreed" />
-                <span>I agree to terms and conditions</span>
-              </div>
-              <Spacer height={10} />
-              <Button width="150px" bckColor="#2b67f6" onClick={onSubmitFormData} disabled={loading}>
-                Sign Up
-              </Button>
-            </form>
-          </div>
-        </Container>
-      )}
+      <Container>
+        <div className="registerPage">
+          <form className="registerForm" autoComplete="off">
+            <h1>Sign Up</h1>
+            <Spacer height={20} />
+            <Field
+              label="E-mail"
+              type="text"
+              name="email"
+              value={formData.email}
+              error={formError.email}
+              onChange={onUpdateFormData}
+              autoComplete="off"
+              placeholder="abc@roomie.com"
+            />
+            <Spacer height={20} />
+            <Field
+              label="Password"
+              type="password"
+              name="password"
+              value={formData.password}
+              error={formError.password}
+              onChange={onUpdateFormData}
+              autoComplete="off"
+            />
+            <Spacer height={20} />
+            <Field
+              label="Verify password"
+              type="password"
+              name="verifyPassword"
+              value={formData.verifyPassword}
+              error={formError.verifyPassword}
+              onChange={onUpdateFormData}
+              autoComplete="off"
+            />
+            <Spacer height={30} />
+            <div className="registerCheckbox">
+              <input type="checkbox" checked={isAgreed} onChange={onUpdateChecked} name="isAgreed" />
+              <span>I agree to terms and conditions</span>
+            </div>
+            <Spacer height={10} />
+            <Button width="150px" bckColor="#2b67f6" onClick={onSubmitFormData} disabled={loading}>
+              Sign Up
+            </Button>
+          </form>
+        </div>
+      </Container>
     </>
   );
 };

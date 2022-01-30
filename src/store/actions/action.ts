@@ -50,11 +50,11 @@ export const Login = (formData: Record<string, string>) => {
     dispatch({ type: ActionTypes.LOADING });
     try {
       const { user } = await signInWithEmailAndPassword(auth, email, password);
-      // const userInfo = await getDoc(doc(db, `users/${user.uid}`));
+      const userInfo = await getDoc(doc(db, `users/${user.uid}`));
 
       dispatch({
         type: ActionTypes.LOGIN_SUCESS,
-        payload: "userInfo",
+        payload: userInfo.id,
       });
     } catch (error: any) {
       if (error.code === "auth/user-not-found") {
@@ -85,6 +85,7 @@ export const Register = (formData: Record<string, string>) => {
         email,
         created: serverTimestamp(),
       });
+      dispatch({ type: ActionTypes.REGISTER_SUCESS, payload: user.uid });
     } catch (error: any) {
       if (error.code === "auth/email-already-in-use") {
         toast.error("User already exist");
@@ -109,6 +110,7 @@ export const isAuthed = () => {
       if (user && !moment().isAfter(dateToCheck)) {
         dispatch({
           type: ActionTypes.LOGIN_SUCESS,
+          payload: user.uid,
         });
       }
       dispatch({ type: ActionTypes.ISAUTH });

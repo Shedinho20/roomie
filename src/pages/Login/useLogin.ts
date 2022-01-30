@@ -40,10 +40,6 @@ export const useLogin = () => {
 
     Login(formData);
   };
-  useEffect(() => {
-    if (auth.login) {
-      navigate("/");
-    }
-  }, [auth.login]);
+
   return { formData, onUpdateFormData, formError, onSubmitFormData };
 };

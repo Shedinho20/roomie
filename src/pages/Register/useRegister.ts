@@ -52,11 +52,5 @@ export const useRegister = () => {
     Register(formData);
   };
 
-  useEffect(() => {
-    if (auth.login) {
-      navigate("/");
-    }
-  }, [auth.login]);
-
   return { isAgreed, onUpdateChecked, formData, onUpdateFormData, formError, onSubmitFormData };
 };

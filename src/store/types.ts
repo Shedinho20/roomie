@@ -10,6 +10,7 @@ export enum ActionTypes {
   //auth
   LOGIN_FAIL = "LOGIN_FAIL",
   LOGIN_SUCESS = "LOGIN_SUCESS",
+  REGISTER_SUCESS = "REGISTER_SUCESS",
   ISAUTH = "ISAUTH",
 }
 
@@ -35,7 +36,11 @@ interface SEARCHFOCUS {
 //Auth types
 interface LOGIN_SUCESS {
   type: typeof ActionTypes.LOGIN_SUCESS;
-  payload?: string | DocumentSnapshot<DocumentData>;
+  payload: string | DocumentSnapshot<DocumentData>;
+}
+interface REGISTER_SUCESS {
+  type: typeof ActionTypes.REGISTER_SUCESS;
+  payload: string | DocumentSnapshot<DocumentData>;
 }
 interface LOGIN_FAIL {
   type: typeof ActionTypes.LOGIN_FAIL;
@@ -46,6 +51,6 @@ interface ISAUTH {
   payload?: string | DocumentSnapshot<DocumentData>;
 }
 
-export type Auth = LOGIN_SUCESS | LOGIN_FAIL | LOADING | ISAUTH;
+export type Auth = LOGIN_SUCESS | LOGIN_FAIL | REGISTER_SUCESS | LOADING | ISAUTH;
 export type Theme = THEME | TOGGLETHEME | LOADING | NAVMOIBILE | SEARCHFOCUS;
 export type Action = Theme | Auth;

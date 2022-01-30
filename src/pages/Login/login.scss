@@ -1,3 +1,5 @@
+@import "../../styles/Theme.scss";
+
 .loginPage {
   width: 100%;
   display: flex;
@@ -7,6 +9,14 @@
   .loginForm {
     width: 80%;
     max-width: 450px;
+  }
+  .forgotPasswordLink {
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease-in;
+    &:hover {
+      color: var(--main-color);
+    }
   }
   span {
     font-size: 0.9rem;
