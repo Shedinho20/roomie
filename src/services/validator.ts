@@ -21,6 +21,7 @@ export const validators: ValidationType = {
       return "Password is weak";
     }
   },
+
   verifyPassword: (verifyPassword: string, { password }: Record<string, string>) => {
     if (validator.isEmpty(verifyPassword)) {
       return "Password is required";
@@ -30,7 +31,6 @@ export const validators: ValidationType = {
     }
   },
 };
-
 export const validateFormSubmit = (formData: Record<string, string>) => {
   let errors: any = {};
   let isValid = true;

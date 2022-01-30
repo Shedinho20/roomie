@@ -57,7 +57,7 @@ export const Navbar = () => {
         </div>
       ) : (
         <div className="navBTN">
-          <Button width="150px" bckColor="transparent" border="#2b67f6" onClick={() => navigate("/register")}>
+          <Button width="150px" bckColor="transparent" border="#2b67f6" onClick={() => navigate("/auth/register")}>
             Open an Account
           </Button>
         </div>

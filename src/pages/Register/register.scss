@@ -1,0 +1,22 @@
+.registerPage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+  .registerForm {
+    width: 80%;
+    max-width: 450px;
+  }
+  span {
+    font-size: 0.9rem;
+  }
+  .registerCheckbox {
+    display: flex;
+    align-items: center;
+    input {
+      margin-right: 0.5em;
+      border: 10rem solid red !important;
+    }
+  }
+}

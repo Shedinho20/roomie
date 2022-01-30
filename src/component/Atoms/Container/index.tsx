@@ -5,6 +5,7 @@ export const Container: React.FunctionComponent = ({ children }) => {
     <div
       style={{
         padding: "5vw",
+        height: "100%",
       }}
     >
       {children}
