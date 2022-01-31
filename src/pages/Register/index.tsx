@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Spacer, Field, Container, Button } from "../../component/Atoms";
 import { Istate } from "../../store";
 import "./register.scss";
@@ -58,6 +58,13 @@ export const RegisterPage = () => {
             <Button width="150px" bckColor="#2b67f6" onClick={onSubmitFormData} disabled={loading}>
               Sign Up
             </Button>
+            <Spacer height={10} />
+            <p>
+              Have an accounnt?
+              <Link to="/auth/login" className="forgotPasswordLink">
+                <span> Sign In</span>
+              </Link>
+            </p>
           </form>
         </div>
       </Container>

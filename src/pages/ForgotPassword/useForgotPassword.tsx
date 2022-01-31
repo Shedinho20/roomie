@@ -60,7 +60,7 @@ export const useForgotPassword = () => {
     if (location.state) {
       const email = location.state.email;
       setformData((formData) => ({ ...formData, email }));
-      const error = validators["email"](email);
+      const error = email !== "" ? validators["email"](email) : "";
       if (error) {
         setformError((formError) => ({ ...formError, email: error }));
       }

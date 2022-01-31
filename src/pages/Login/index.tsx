@@ -46,6 +46,13 @@ export const LoginPage = () => {
             <Button width="150px" bckColor="#2b67f6" onClick={onSubmitFormData} disabled={loading}>
               Login
             </Button>
+            <Spacer height={10} />
+            <p>
+              Haven't registered?
+              <Link to="/auth/register" className="forgotPasswordLink">
+                <span> Sign Up now</span>
+              </Link>
+            </p>
           </form>
         </div>
       </Container>
