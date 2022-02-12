@@ -12,6 +12,15 @@ export const validators: ValidationType = {
       return "E-mail is invalid";
     }
   },
+  username: (firstname: string) => {
+    if (validator.isEmpty(firstname)) {
+      return "Field is required";
+    }
+
+    if (!validator.isAlphanumeric(firstname)) {
+      return "Enter a valid username (a-zA-Z0-9)";
+    }
+  },
   password: (password: string) => {
     if (validator.isEmpty(password)) {
       return "Password is required";

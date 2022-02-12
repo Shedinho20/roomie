@@ -26,9 +26,13 @@
 
 .forgotPasswordLink {
   text-decoration: none;
-  color: var(--textMain-color);
+  color: var(--main-color);
   transition: all 0.3s ease-in;
   &:hover {
-    color: var(--main-color);
+    color: var(--textMain-color);
   }
+}
+
+.container {
+  min-height: calc(100% - 70px);
 }

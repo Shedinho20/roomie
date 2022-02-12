@@ -6,7 +6,6 @@ import "./home.scss";
 export const Home = () => {
   return (
     <Container>
-      <Spacer height={60} />
       <div className="home">
         <div className="homeText">
           <h3>Find deals on hotels, homes, and much more...</h3>

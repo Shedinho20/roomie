@@ -7,9 +7,10 @@ interface Props {
   border?: string;
   onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   disabled?: boolean;
+  extraStyles?: Record<string, string>;
 }
 
-export const Button: React.FC<Props> = ({ width, children, bckColor, border, onClick, disabled }) => {
+export const Button: React.FC<Props> = ({ width, extraStyles, children, bckColor, border, onClick, disabled }) => {
   const style = {
     width: `${width}`,
     backgroundColor: `${bckColor}`,
@@ -17,7 +18,12 @@ export const Button: React.FC<Props> = ({ width, children, bckColor, border, onC
   };
 
   return (
-    <button className={disabled ? "button loading" : "button"} style={style} onClick={onClick} disabled={disabled}>
+    <button
+      className={disabled ? "button loading" : "button"}
+      style={{ ...style, ...extraStyles }}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {children}
     </button>
   );

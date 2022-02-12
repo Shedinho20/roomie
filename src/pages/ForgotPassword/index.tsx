@@ -26,7 +26,7 @@ export const ForgotPassword = () => {
           />
           <Spacer height={20} />
           <Button width="150px" bckColor="#2b67f6" onClick={onSubmitFormData} disabled={loading}>
-            Login
+            Reset Password
           </Button>
           <Spacer height={10} />
           <p>

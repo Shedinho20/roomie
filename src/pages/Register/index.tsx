@@ -2,14 +2,14 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { Spacer, Field, Container, Button } from "../../component/Atoms";
+import { SocialAuth } from "../../component/Compounds";
 import { Istate } from "../../store";
 import "./register.scss";
 import { useRegister } from "./useRegister";
 
 export const RegisterPage = () => {
-  const navigate = useNavigate();
   const { auth } = useSelector((state: Istate) => state);
-  const { loading, login } = auth;
+  const { loading } = auth;
   const { isAgreed, onUpdateChecked, formData, onUpdateFormData, formError, onSubmitFormData } = useRegister();
 
   return (
@@ -28,6 +28,17 @@ export const RegisterPage = () => {
               onChange={onUpdateFormData}
               autoComplete="off"
               placeholder="abc@roomie.com"
+            />
+            <Spacer height={20} />
+            <Field
+              label="Username"
+              type="text"
+              name="username"
+              value={formData.username}
+              error={formError.username}
+              onChange={onUpdateFormData}
+              autoComplete="off"
+              placeholder="Shedinho20"
             />
             <Spacer height={20} />
             <Field
@@ -60,11 +71,13 @@ export const RegisterPage = () => {
             </Button>
             <Spacer height={10} />
             <p>
-              Have an accounnt?
+              Have an account?
               <Link to="/auth/login" className="forgotPasswordLink">
                 <span> Sign In</span>
               </Link>
             </p>
+            <Spacer height={30} />
+            <SocialAuth />
           </form>
         </div>
       </Container>
