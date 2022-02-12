@@ -27,6 +27,8 @@
           text-transform: capitalize;
           font-weight: 500;
           margin-bottom: 0.2em;
+          letter-spacing: 0.1em;
+          white-space: nowrap;
           @include phone {
             font-size: 0.9rem;
           }
@@ -50,5 +52,8 @@
   }
   .savedItems {
     flex: 2;
+  }
+  .userAccountLink {
+    display: flex;
   }
 }

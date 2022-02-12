@@ -34,6 +34,7 @@ export const LoginPage = () => {
               label="Password"
               type="password"
               name="password"
+              placeholder="Password20@"
               value={formData.password}
               error={formError.password}
               onChange={onUpdateFormData}

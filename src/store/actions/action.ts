@@ -103,6 +103,7 @@ export const signInWithGoogle = (setLoading: React.Dispatch<React.SetStateAction
           id: res.user.uid,
           email: res.user.email,
           created: serverTimestamp(),
+          username: res.user.displayName?.split(" ").join(""),
         });
       }
       dispatch({
@@ -193,6 +194,11 @@ export const setUserAccountInfo = () => {
         type: ActionTypes.SETACCOUNT,
         payload: userInfo,
       });
-    } catch (error) {}
+    } catch (error: any) {
+      console.log(error.message);
+      dispatch({
+        type: ActionTypes.SETACCOUNTFAIL,
+      });
+    }
   };
 };

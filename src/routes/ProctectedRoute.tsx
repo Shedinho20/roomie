@@ -8,3 +8,9 @@ export const ProctectedRoute = () => {
   const { login } = auth;
   return login ? <Navigate to="/" /> : <Outlet />;
 };
+
+export const ProctectedRouteLoggedIn = () => {
+  const { auth } = useSelector((state: Istate) => state);
+  const { login } = auth;
+  return login ? <Outlet /> : <Navigate to="/auth/login" />;
+};

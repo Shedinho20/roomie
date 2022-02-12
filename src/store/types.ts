@@ -15,6 +15,7 @@ export enum ActionTypes {
   //account
   SETACCOUNT = "SETACCOUNT",
   SETACCOUNTFAIL = "SETACCOUNTFAIL",
+  SAVINGACCT = "SAVINGACCT",
 }
 
 //Theme types
@@ -62,9 +63,12 @@ interface SETACCOUNTFAIL {
   type: typeof ActionTypes.SETACCOUNTFAIL;
   payload?: string | DocumentSnapshot<DocumentData>;
 }
+interface SAVINGACCT {
+  type: typeof ActionTypes.SAVINGACCT;
+}
 
 export type Auth = LOGIN_SUCESS | LOGIN_FAIL | REGISTER_SUCESS | LOADING | ISAUTH;
 export type Theme = THEME | TOGGLETHEME | LOADING | NAVMOIBILE | SEARCHFOCUS;
-export type Account = SETACCOUNT | SETACCOUNTFAIL;
+export type Account = SETACCOUNT | SETACCOUNTFAIL | SAVINGACCT;
 
 export type Action = Theme | Auth | Account;

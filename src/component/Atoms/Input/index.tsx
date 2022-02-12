@@ -32,7 +32,7 @@ export const Field: React.FC<BaseInputProps> = ({
   const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (!disabled) {
+    if (!disabled && border) {
       ref.current?.focus();
     }
   }, [disabled]);

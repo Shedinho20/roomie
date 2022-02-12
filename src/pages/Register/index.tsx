@@ -49,6 +49,7 @@ export const RegisterPage = () => {
               error={formError.password}
               onChange={onUpdateFormData}
               autoComplete="off"
+              placeholder="Password20@"
             />
             <Spacer height={20} />
             <Field
@@ -59,6 +60,7 @@ export const RegisterPage = () => {
               error={formError.verifyPassword}
               onChange={onUpdateFormData}
               autoComplete="off"
+              placeholder="Password20@"
             />
             <Spacer height={30} />
             <div className="registerCheckbox">

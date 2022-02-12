@@ -14,7 +14,9 @@ const accountReducer = (state = initialstate, action: Account) => {
     case ActionTypes.SETACCOUNT:
       return { ...state, loading: false, accountInfo: action.payload };
     case ActionTypes.SETACCOUNTFAIL:
-      return { ...state, login: true, uID: action.payload };
+      return { ...state, loading: false };
+    case ActionTypes.SAVINGACCT:
+      return { ...state, loading: true };
     default:
       return state;
   }
