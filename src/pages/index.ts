@@ -3,3 +3,4 @@ export { LoginPage } from "./Login";
 export { RegisterPage } from "./Register";
 export { NotFoundPage } from "./NotFoundPage";
 export { ForgotPassword } from "./ForgotPassword";
+export { UserAccountPage } from "./UserAccountPage";

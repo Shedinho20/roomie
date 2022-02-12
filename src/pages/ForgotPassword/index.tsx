@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Container, Field, Spacer } from "../../component/Atoms";
 import { useForgotPassword } from "./useForgotPassword";
 import "./Forgotpassword.scss";
+import { Link } from "react-router-dom";
 
 export const ForgotPassword = () => {
   const { formData, loading, formError, onUpdateFormData, onSubmitFormData } = useForgotPassword();
@@ -25,8 +26,14 @@ export const ForgotPassword = () => {
           />
           <Spacer height={20} />
           <Button width="150px" bckColor="#2b67f6" onClick={onSubmitFormData} disabled={loading}>
-            Login
+            Reset Password
           </Button>
+          <Spacer height={10} />
+          <p>
+            <Link to="/auth/login" className="forgotPasswordLink">
+              <span>Back to Sign In</span>
+            </Link>
+          </p>
         </form>
       </div>
     </Container>

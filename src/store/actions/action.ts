@@ -1,11 +1,19 @@
 import { ActionTypes, Action } from "../types";
 import { Dispatch } from "redux";
 import { Istate } from "..";
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+  signInWithPopup,
+} from "firebase/auth";
 import { auth, db } from "../../services/firebase";
 import { doc, getDoc, serverTimestamp, setDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import moment from "moment";
+import { FirebaseError } from "@firebase/util";
 
 //Theme Actions
 export const setTheme = () => {
@@ -44,53 +52,104 @@ export const toggleTheme = () => {
 
 //Auth Actions
 
-export const Login = (formData: Record<string, string>) => {
-  const { password, email } = formData;
+export const Login = (formData: Record<string, string>): ((dispatch: Dispatch<Action>) => Promise<void>) => {
+  const { password, username } = formData;
   return async (dispatch: Dispatch<Action>) => {
     dispatch({ type: ActionTypes.LOADING });
     try {
-      const { user } = await signInWithEmailAndPassword(auth, email, password);
-      const userInfo = await getDoc(doc(db, `users/${user.uid}`));
+      const userName = await getDoc(doc(db, `usernames/${username.toLowerCase()}`));
+
+      if (!userName.exists()) {
+        toast.error("User not found");
+        return;
+      }
+
+      const { user } = await signInWithEmailAndPassword(auth, userName.data().email, password);
+      // const userInfo = await getDoc(doc(db, `users/${user.uid}`));
 
       dispatch({
         type: ActionTypes.LOGIN_SUCESS,
-        payload: userInfo.id,
+        payload: user.uid,
       });
-    } catch (error: any) {
-      if (error.code === "auth/user-not-found") {
-        toast.error("User not found");
+    } catch (error: unknown) {
+      if (error instanceof FirebaseError) {
+        if (error.code === "auth/user-not-found") {
+          toast.error("User not found");
+        } else if (error.code === "auth/wrong-password") {
+          toast.error("Incorrect password");
+        } else {
+          toast.error("Something went wrong");
+        }
+        dispatch({
+          type: ActionTypes.LOGIN_FAIL,
+          payload: error.code,
+        });
       }
-      if (error.code === "auth/network-request-failed") {
-        toast.error("Something went wrong");
-      }
-      dispatch({
-        type: ActionTypes.LOGIN_FAIL,
-        payload: error.code,
-      });
     } finally {
       dispatch({ type: ActionTypes.LOADING });
     }
   };
 };
 
+export const signInWithGoogle = (setLoading: React.Dispatch<React.SetStateAction<boolean>>) => {
+  setLoading(true);
+  return async (dispatch: Dispatch<Action>) => {
+    try {
+      const provider = new GoogleAuthProvider();
+      const res = await signInWithPopup(auth, provider);
+      const userInfo = await getDoc(doc(db, `users/${res.user.uid}`));
+      if (!userInfo.exists()) {
+        await setDoc(doc(db, `users/${res.user.uid}`), {
+          id: res.user.uid,
+          email: res.user.email,
+          created: serverTimestamp(),
+          username: res.user.displayName?.split(" ").join(""),
+        });
+      }
+      dispatch({
+        type: ActionTypes.LOGIN_SUCESS,
+        payload: res.user.uid,
+      });
+    } catch (error) {
+      toast.error("Something went wrong");
+      setLoading(false);
+    } finally {
+    }
+  };
+};
+
 export const Register = (formData: Record<string, string>) => {
-  const { password, email } = formData;
+  const { password, email, username } = formData;
 
   return async (dispatch: Dispatch<Action>) => {
     dispatch({ type: ActionTypes.LOADING });
     try {
+      const userName = await getDoc(doc(db, `usernames/${username.toLowerCase()}`));
+
+      if (userName.exists()) {
+        toast.error("Username  already exist");
+        return;
+      }
+
       const { user } = await createUserWithEmailAndPassword(auth, email, password);
+
       await setDoc(doc(db, `users/${user.uid}`), {
-        id: user.uid,
+        uid: user.uid,
         email,
         created: serverTimestamp(),
+        username,
       });
+
+      await setDoc(doc(db, `usernames/${username}`), { email });
+
       dispatch({ type: ActionTypes.REGISTER_SUCESS, payload: user.uid });
-    } catch (error: any) {
-      if (error.code === "auth/email-already-in-use") {
-        toast.error("User already exist");
-      } else {
-        toast.error("Something went wrong");
+    } catch (error: unknown) {
+      if (error instanceof FirebaseError) {
+        if (error.code === "auth/email-already-in-use") {
+          toast.error("Email already exist");
+        } else {
+          toast.error("Something went wrong");
+        }
       }
     } finally {
       dispatch({ type: ActionTypes.LOADING });
@@ -101,13 +160,19 @@ export const Register = (formData: Record<string, string>) => {
 export const isAuthed = () => {
   return (dispatch: Dispatch<Action>) => {
     onAuthStateChanged(auth, (user) => {
-      const dateToCheck = moment(user?.metadata.lastSignInTime).add(20, "minutes");
+      if (!user) {
+        dispatch({
+          type: ActionTypes.LOGIN_FAIL,
+        });
+        dispatch({ type: ActionTypes.ISAUTH });
+        return;
+      }
+
+      const dateToCheck = moment(user.metadata.lastSignInTime).add(1, "day");
 
       if (moment().isAfter(dateToCheck)) {
         signOut(auth);
-      }
-
-      if (user && !moment().isAfter(dateToCheck)) {
+      } else {
         dispatch({
           type: ActionTypes.LOGIN_SUCESS,
           payload: user.uid,
@@ -115,5 +180,25 @@ export const isAuthed = () => {
       }
       dispatch({ type: ActionTypes.ISAUTH });
     });
+  };
+};
+
+//User Account page  InfoSection
+
+export const setUserAccountInfo = () => {
+  return async (dispatch: Dispatch<Action>, getstate: () => Istate) => {
+    const id = getstate().auth.uID;
+    try {
+      const userInfo = (await getDoc(doc(db, `users/${id}`))).data();
+      dispatch({
+        type: ActionTypes.SETACCOUNT,
+        payload: userInfo,
+      });
+    } catch (error: any) {
+      console.log(error.message);
+      dispatch({
+        type: ActionTypes.SETACCOUNTFAIL,
+      });
+    }
   };
 };

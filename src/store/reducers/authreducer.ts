@@ -25,7 +25,7 @@ const authReducer = (state = initialstate, action: Auth) => {
     case ActionTypes.ISAUTH:
       return { ...state, isAuth: true };
     case ActionTypes.REGISTER_SUCESS:
-      return { ...state, isAuth: true };
+      return { ...state, isAuth: true, uID: action.payload };
     case ActionTypes.REGISTER_SUCESS:
       return { ...state, uID: action.payload };
     default:

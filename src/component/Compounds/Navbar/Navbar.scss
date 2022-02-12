@@ -11,6 +11,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 5vw;
+  z-index: 20;
   .navbarMain {
     display: flex;
     align-items: center;
@@ -20,6 +21,7 @@
       align-items: flex-end;
       #logo {
         margin-right: 5px;
+        cursor: pointer;
         @include tablet {
           width: 30px;
         }
@@ -28,7 +30,7 @@
         letter-spacing: 0.8px;
         color: var(--textMain-color);
         span {
-          color: var(--textSec-color);
+          color: var(--logo-color);
         }
       }
     }
@@ -79,6 +81,7 @@
     }
   }
   .navBTN {
+    display: flex;
     @include tablet {
       display: none;
     }

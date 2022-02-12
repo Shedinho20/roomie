@@ -39,10 +39,16 @@ export const useForgotPassword = () => {
     }
 
     setloading(true);
-    sendPasswordResetEmail(auth, formData.email)
+    sendPasswordReset(formData.email);
+  };
+
+  const sendPasswordReset = (email: string) => {
+    sendPasswordResetEmail(auth, email)
       .then(() => {
         toast.success("Check you email");
-        navigate("/auth/login");
+        if (location.pathname === "/auth/login") {
+          navigate("/auth/login");
+        }
       })
       .catch((error) => {
         if (error.code === "auth/user-not-found") {
@@ -52,7 +58,9 @@ export const useForgotPassword = () => {
         }
       })
       .finally(() => {
-        setloading(false);
+        if (location.pathname === "/auth/login") {
+          setloading(false);
+        }
       });
   };
 
@@ -60,12 +68,12 @@ export const useForgotPassword = () => {
     if (location.state) {
       const email = location.state.email;
       setformData((formData) => ({ ...formData, email }));
-      const error = validators["email"](email);
+      const error = email !== "" ? validators["email"](email) : "";
       if (error) {
         setformError((formError) => ({ ...formError, email: error }));
       }
     }
   }, []);
 
-  return { formData, loading, formError, onUpdateFormData, onSubmitFormData };
+  return { sendPasswordReset, formData, loading, formError, onUpdateFormData, onSubmitFormData };
 };

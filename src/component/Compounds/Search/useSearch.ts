@@ -1,4 +1,5 @@
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import moment from "moment";
+import { ChangeEvent, MouseEventHandler, useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { Istate } from "../../../store";
 
@@ -35,7 +36,7 @@ export const useSearch = () => {
     });
   };
 
-  const handleClickinside = (e: any) => {
+  const handleClickinside = (e: unknown) => {
     setstate({
       ...state,
       calenderCheckin: false,
@@ -112,6 +113,7 @@ export const useSearch = () => {
       calenderCheckin: false,
       calenderCheckOut: !state.calenderCheckOut,
     });
+    console.log(state);
   };
 
   useEffect(() => {

@@ -11,18 +11,19 @@ export const useRegister = () => {
   const navigate = useNavigate();
 
   const { Register } = bindActionCreators(actionCreators, dispatch);
-  const { auth } = useSelector((state: Istate) => state);
 
   const [formData, setformData] = useState({
     email: "",
     password: "",
     verifyPassword: "",
+    username: "",
   });
 
   const [formError, setformError] = useState({
     email: "",
     password: "",
     verifyPassword: "",
+    username: "",
   });
 
   const [isAgreed, setisAgreed] = useState(false);

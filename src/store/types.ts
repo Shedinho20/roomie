@@ -12,6 +12,10 @@ export enum ActionTypes {
   LOGIN_SUCESS = "LOGIN_SUCESS",
   REGISTER_SUCESS = "REGISTER_SUCESS",
   ISAUTH = "ISAUTH",
+  //account
+  SETACCOUNT = "SETACCOUNT",
+  SETACCOUNTFAIL = "SETACCOUNTFAIL",
+  SAVINGACCT = "SAVINGACCT",
 }
 
 //Theme types
@@ -44,13 +48,27 @@ interface REGISTER_SUCESS {
 }
 interface LOGIN_FAIL {
   type: typeof ActionTypes.LOGIN_FAIL;
-  payload: string | DocumentSnapshot<DocumentData>;
+  payload?: string | DocumentSnapshot<DocumentData>;
 }
 interface ISAUTH {
   type: typeof ActionTypes.ISAUTH;
+  payload?: {} | DocumentSnapshot<DocumentData>;
+}
+//AccountType
+interface SETACCOUNT {
+  type: typeof ActionTypes.SETACCOUNT;
+  payload: DocumentData | undefined;
+}
+interface SETACCOUNTFAIL {
+  type: typeof ActionTypes.SETACCOUNTFAIL;
   payload?: string | DocumentSnapshot<DocumentData>;
+}
+interface SAVINGACCT {
+  type: typeof ActionTypes.SAVINGACCT;
 }
 
 export type Auth = LOGIN_SUCESS | LOGIN_FAIL | REGISTER_SUCESS | LOADING | ISAUTH;
 export type Theme = THEME | TOGGLETHEME | LOADING | NAVMOIBILE | SEARCHFOCUS;
-export type Action = Theme | Auth;
+export type Account = SETACCOUNT | SETACCOUNTFAIL | SAVINGACCT;
+
+export type Action = Theme | Auth | Account;

@@ -4,7 +4,9 @@
   justify-content: center;
   height: 100%;
   align-items: center;
+  min-height: 600px;
   .registerForm {
+    position: relative;
     width: 80%;
     max-width: 450px;
   }
