@@ -4,7 +4,7 @@ import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import HouseSidingIcon from "@mui/icons-material/HouseSiding";
 import { Datepicker } from "../../molecules/DatePicker";
 import { useSearch } from "./useSearch";
-import { Button, Container } from "../../Atoms";
+import { Button, Container, SearchLocation, Spacer } from "../../Atoms";
 
 export const Search = () => {
   const {
@@ -39,7 +39,15 @@ export const Search = () => {
             onBlur={handleBlur}
             ref={searchBoxRef}
           />
-          <div className={`${!state.locationFocus ? "suggestedLoc" : "suggestedLoc suggestedLocOpen"}`}></div>
+          <div className={`${state.locationFocus ? "suggestedLoc" : "suggestedLoc suggestedLocOpen"}`}>
+            <SearchLocation />
+            <Spacer height={5} />
+            <SearchLocation />
+            <Spacer height={5} />
+            <SearchLocation />
+            <Spacer height={5} />
+            <SearchLocation />
+          </div>
         </div>
         <div className="checkIn">
           <Datepicker

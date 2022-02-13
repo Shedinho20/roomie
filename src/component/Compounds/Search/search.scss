@@ -59,9 +59,13 @@
       .suggestedLoc {
         position: absolute;
         background-color: #ffffff;
-        width: 140%;
+        width: 300px;
         left: 3px;
-        height: 200px;
+        height: 220px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
         border-radius: 3px;
         box-shadow: 0px 5px 5px -3px rgb(0 0 0 / 20%), 0px 8px 10px 1px rgb(0 0 0 / 14%),
           0px 3px 14px 2px rgb(0 0 0 / 12%);
